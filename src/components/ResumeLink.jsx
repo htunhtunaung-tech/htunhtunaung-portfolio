@@ -10,7 +10,7 @@ export function ResumeLink({ className = '', short = false, onClick }) {
   if (profile.resume) {
     return (
       <a className={className} href={profile.resume} download onClick={onClick}>
-        <span>{short ? 'Resume' : 'Download Resume'}</span>
+          <span>{short ? 'CV' : 'Download CV'}</span>
         <Download />
       </a>
     );
