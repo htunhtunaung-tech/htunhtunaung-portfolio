@@ -1,5 +1,6 @@
 import { skills } from '../data/site.js';
 import { Headline, Reveal, SectionLabel } from './Reveal.jsx';
+import { SkillIcon } from './SkillIcons.jsx';
 
 export function Skills() {
   return (
@@ -20,7 +21,8 @@ export function Skills() {
               <ul>
                 {group.items.map((item, i) => (
                   <li key={item} style={{ '--i': i }}>
-                    <span>{item}</span>
+                    <SkillIcon name={item} />
+                    <span className="skills__name">{item}</span>
                   </li>
                 ))}
               </ul>
