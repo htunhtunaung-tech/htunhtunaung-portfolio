@@ -44,7 +44,7 @@ export const profile = {
   photo: null,
   // Put your CV in /public (for example /public/resume.pdf) and set 'resume.pdf'.
   // While this is null the resume buttons say "Request Resume" and lead to the contact form.
-  resume: null,
+  resume: "Htun-Htun-Aung-CV.pdf",
 };
 
 export const about = {
