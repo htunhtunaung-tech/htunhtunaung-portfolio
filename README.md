@@ -62,7 +62,7 @@ npx vercel          # first run asks you to log in and creates a preview
 npx vercel --prod   # publish to your production URL
 ```
 
-**After the first deploy**, replace `YOUR-DOMAIN.vercel.app` with your real address in three places so search engines and link previews work: `index.html` (the two `og:` lines), `public/robots.txt` and `public/sitemap.xml`. Commit and push again.
+**After the first deploy**, replace `htunhtunaung-portfolio.vercel.app` with your real address in three places so search engines and link previews work: `index.html` (the two `og:` lines), `public/robots.txt` and `public/sitemap.xml`. Commit and push again.
 
 ## Make the contact form send email
 

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Replace with your real domain after deploying.
-Sitemap: https://YOUR-DOMAIN.vercel.app/sitemap.xml
+Sitemap: https://htunhtunaung-portfolio.vercel.app/sitemap.xml
