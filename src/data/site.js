@@ -41,7 +41,7 @@ export const profile = {
   timezone: 'UTC+07',
   studying: 'Digital Media Engineering + Computer Science',
   // Put a photo in /public (for example /public/me.jpg) and set 'me.jpg'.
-  photo: 'me.png',
+  photo: 'me.jpg',
   // Put your CV in /public (for example /public/resume.pdf) and set 'resume.pdf'.
   // While this is null the resume buttons say "Request Resume" and lead to the contact form.
   resume: "Htun-Htun-Aung-CV.pdf",
