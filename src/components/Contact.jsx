@@ -3,6 +3,7 @@ import { contact, settings } from '../data/site.js';
 import { Alert, ArrowRight, ArrowUpRight, Check } from './Icons.jsx';
 import { ResumeLink } from './ResumeLink.jsx';
 import { Headline, Reveal, SectionLabel } from './Reveal.jsx';
+import { SocialLinks } from './SocialLinks.jsx';
 
 const EMPTY = { name: '', email: '', subject: '', message: '', website: '' };
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -105,8 +106,6 @@ export function Contact() {
     settings.showPhone && contact.phone
       ? { label: 'Phone', value: contact.phone, href: `tel:${contact.phone.replace(/[^+\d]/g, '')}` }
       : null,
-    contact.linkedin ? { label: 'LinkedIn', value: 'View profile', href: contact.linkedin, external: true } : null,
-    contact.github ? { label: 'GitHub', value: 'View profile', href: contact.github, external: true } : null,
   ].filter(Boolean);
 
   return (
@@ -135,6 +134,8 @@ export function Contact() {
               </Reveal>
             ))}
           </ul>
+
+          <SocialLinks links={contact} />
 
           <Reveal delay={200}>
             <ResumeLink className="btn btn--ghost" />
