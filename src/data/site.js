@@ -182,12 +182,12 @@ export const projects = [
 
 // Only list tools you can talk about in an interview.
 export const skills = [
-  { group: 'Frontend', items: ['HTML', 'CSS', 'JavaScript'] },
-  { group: 'Backend', items: ['Python', 'Java', 'Django', 'PostgreSQL', 'APIs'] },
+  { group: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React'] },
+  { group: 'Backend', items: ['Python', 'Java', 'C++', 'Django', 'PostgreSQL', 'APIs'] },
   { group: 'Data & Analytics', items: ['SQL', 'Data analysis', 'Data visualization'] },
   {
     group: 'Creative Technology',
-    items: ['UI/UX design', 'Graphic design', 'Blender', '3D modeling', 'Digital media production'],
+    items: ['UI/UX design', 'Figma', 'Graphic design', 'Blender', '3D modeling', 'Digital media production'],
   },
 ];
 
