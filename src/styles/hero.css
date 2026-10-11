@@ -1,0 +1,479 @@
+/* Hero: entrance sequence, pointer light, and the orbit object. */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: min(860px, calc(100svh - var(--nav-h)));
+  overflow: hidden;
+  --mx: 70%;
+  --my: 40%;
+}
+
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 72% 42%, #000 10%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 80% at 72% 42%, #000 10%, transparent 78%);
+}
+/* The grid drifts slowly; it moves with a transform so it stays cheap to animate. */
+.hero__grid::before {
+  content: '';
+  position: absolute;
+  inset: -80px;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: grid-drift 36s linear infinite;
+}
+@keyframes grid-drift {
+  to {
+    transform: translate3d(80px, 80px, 0);
+  }
+}
+
+/* Soft light that trails the pointer */
+.hero__spot {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(520px circle at var(--mx) var(--my), var(--accent-soft), transparent 70%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 56px 64px;
+  padding-block: 72px 56px;
+}
+
+.hero__copy {
+  flex: 1.25 1 520px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+/* Entrance: each piece fades up in order (--n sets the order). */
+.hero-in {
+  animation: hero-in 0.9s var(--ease) both;
+  animation-delay: calc(var(--n, 0) * 90ms + 120ms);
+}
+.hero-in--scale {
+  animation-name: hero-in-scale;
+  animation-duration: 1.4s;
+}
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+@keyframes hero-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+}
+
+.status {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: var(--glass);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.status__dot {
+  position: relative;
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.status__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: ping 2.4s var(--ease) infinite;
+}
+@keyframes ping {
+  to {
+    transform: scale(3.4);
+    opacity: 0;
+  }
+}
+
+.hero__id {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line-2);
+}
+.hero__name {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.hero__role {
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero__title {
+  font-size: clamp(42px, 5.7vw, 82px);
+  line-height: 0.98;
+  letter-spacing: -0.038em;
+  font-weight: 500;
+  text-wrap: balance;
+}
+.hero__title .headline__word > span {
+  transition-delay: calc(var(--i) * 60ms + 320ms);
+}
+
+.hero__intro {
+  max-width: 540px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
+  margin-top: 8px;
+}
+
+.hero__visual {
+  flex: 1 1 400px;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__strip {
+  position: relative;
+  border-top: 1px solid var(--line);
+}
+.hero__strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 40px;
+  padding-block: 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+.hero__strip strong {
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  color: var(--text-2);
+}
+.scroll-cue__line {
+  position: relative;
+  width: 44px;
+  height: 1px;
+  overflow: hidden;
+  background: var(--line-2);
+}
+.scroll-cue__line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  animation: cue 2.2s var(--ease-in-out) infinite;
+}
+@keyframes cue {
+  0% {
+    transform: translateX(-100%);
+  }
+  55%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ---------- Orbit object ---------- */
+
+.orbit {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+  perspective: 900px;
+}
+.orbit__glow {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 66%);
+  filter: blur(24px);
+  animation: breathe 7s ease-in-out infinite;
+}
+@keyframes breathe {
+  50% {
+    transform: scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+.orbit__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 0 solid var(--line-strong);
+}
+.orbit__corner--tl {
+  top: 0;
+  left: 0;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+.orbit__corner--tr {
+  top: 0;
+  right: 0;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+.orbit__corner--bl {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+.orbit__corner--br {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+.orbit__coord {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+.orbit__coord--tl {
+  top: 8px;
+  left: 30px;
+}
+.orbit__coord--br {
+  right: 30px;
+  bottom: 8px;
+}
+
+.orbit__tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: flat;
+  will-change: transform;
+}
+
+.orbit__ring {
+  position: absolute;
+  left: 0;
+  top: 35%;
+  width: 100%;
+  height: 30%;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  transform: rotate(-16deg);
+}
+.orbit__ring--back {
+  z-index: 1;
+}
+.orbit__ring--front {
+  z-index: 3;
+  border-color: var(--line-strong);
+  clip-path: inset(50% 0 0 0);
+}
+.orbit__ring--dashed {
+  left: 7%;
+  top: 18%;
+  width: 86%;
+  height: 64%;
+  border-style: dashed;
+  border-color: var(--line);
+  transform: rotate(28deg);
+  animation: spin-dashed 120s linear infinite;
+}
+@keyframes spin-dashed {
+  to {
+    transform: rotate(388deg);
+  }
+}
+
+.orbit__sphere {
+  position: absolute;
+  left: 22%;
+  top: 22%;
+  width: 56%;
+  height: 56%;
+  z-index: 2;
+  animation: float 9s ease-in-out infinite;
+}
+@keyframes float {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.orbit__ball {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 26%,
+    #ffffff 0%,
+    #dde6ff 5%,
+    var(--accent) 30%,
+    var(--sphere-mid) 62%,
+    var(--sphere-end) 100%
+  );
+  box-shadow: inset -18px -26px 60px rgba(0, 0, 0, 0.6), 0 44px 80px var(--shadow);
+}
+.orbit__lat,
+.orbit__meridian {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+}
+.orbit__lat {
+  left: 0;
+  top: 35%;
+  width: 100%;
+  height: 30%;
+}
+/* Meridians squeeze and widen in turn, which reads as the globe rotating. */
+.orbit__meridian {
+  inset: 0;
+  animation: meridian 16s linear infinite;
+}
+.orbit__meridian:nth-of-type(4) {
+  animation-delay: -5.33s;
+}
+.orbit__meridian:nth-of-type(5) {
+  animation-delay: -10.66s;
+}
+@keyframes meridian {
+  0% {
+    transform: scaleX(1);
+    animation-timing-function: cubic-bezier(0.47, 0, 0.74, 0.71);
+  }
+  50% {
+    transform: scaleX(0);
+    animation-timing-function: cubic-bezier(0.39, 0.58, 0.57, 1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.orbit__node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  background: var(--chip-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text-2);
+  will-change: transform, opacity;
+}
+.orbit__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+@media (max-width: 860px) {
+  .hero__inner {
+    padding-block: 32px 40px;
+    gap: 40px;
+  }
+  .hero__copy {
+    gap: 20px;
+  }
+  .status {
+    border-radius: 10px;
+    font-size: 10.5px;
+  }
+  .hero__intro {
+    font-size: 16px;
+  }
+  .hero__visual {
+    flex-basis: 100%;
+  }
+  .orbit {
+    max-width: min(74vw, 400px);
+  }
+  .orbit__node {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+  .hero__strip-inner p:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__actions {
+    align-self: stretch;
+  }
+  .hero__actions .btn {
+    flex: 1 1 100%;
+  }
+}

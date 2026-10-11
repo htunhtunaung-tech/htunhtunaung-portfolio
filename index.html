@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Htun Htun Aung — Full-Stack Developer &amp; Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Htun Htun Aung (Louis), a full-stack developer and software engineer studying Digital Media Engineering and Computer Science. Projects in web development, data analytics and digital media."
+    />
+    <meta name="author" content="Htun Htun Aung" />
+    <meta name="theme-color" content="#0A0B0E" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Social sharing preview. After deploying, replace YOUR-DOMAIN with your real domain. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Htun Htun Aung — Full-Stack Developer &amp; Software Engineer" />
+    <meta
+      property="og:description"
+      content="I build digital experiences that solve real problems. Full-stack development, software engineering and data analytics."
+    />
+    <meta property="og:image" content="https://YOUR-DOMAIN.vercel.app/og.png" />
+    <meta property="og:url" content="https://YOUR-DOMAIN.vercel.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Apply the saved theme before first paint so the page never flashes. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-theme', saved);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Htun Htun Aung",
+        "alternateName": "Louis",
+        "jobTitle": "Full-Stack Developer & Software Engineer",
+        "description": "Digital Media Engineering student at Khon Kaen University and Computer Science student at University of the People. Founder of TechTrek Edu.",
+        "knowsAbout": ["Full-stack development", "Software engineering", "Data analytics", "Digital media"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>This portfolio needs JavaScript to run. You can reach me at htunhtunaung.h@kkumail.com.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
