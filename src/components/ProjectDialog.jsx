@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useOverlay } from '../hooks/useOverlay.js';
 import { ArrowUpRight, Close } from './Icons.jsx';
 
-const LINK_LABELS = { github: 'GitHub', live: 'Live demo', site: 'Website' };
+const LINK_LABELS = { github: 'GitHub', live: 'Live demo', site: 'Website', figma: 'Figma design' };
 
 function Block({ title, children, index }) {
   return (

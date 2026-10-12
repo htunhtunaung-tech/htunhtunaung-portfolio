@@ -131,23 +131,46 @@ export const projects = [
   },
   {
     id: 'interntrack',
-    category: 'Full-Stack Web Application',
+    category: 'Full-Stack Web Application · UX/UI',
     badge: 'Team project',
     title: 'InternTrack',
-    summary: 'A team-built web application that keeps internship applications tracked in one place.',
+    summary:
+      'A team-built web app that keeps every internship application, interview and company in one place. I designed it in Figma, from research to final screens, and built the frontend.',
     cover: 'browser',
-    image: null,
+    image: 'projects/interntrack-dashboard.jpg',
     featured: true,
-    // TODO: replace with your specific contribution (the pages and features you built).
-    role: 'Team member',
+    role: 'UX/UI Designer and frontend developer',
     outcome: null,
-    tech: ['Python', 'Django', 'PostgreSQL', 'HTML', 'CSS'],
-    links: { github: null, live: null },
+    tech: ['Figma', 'UX research', 'HTML', 'CSS', 'JavaScript', 'Django', 'PostgreSQL'],
+    links: { figma: 'https://www.figma.com/design/BB33jeuOBuxQAjCmsok66e/InternTrack-%E2%80%94-UX-UI-Master-Design?node-id=0-1', github: null, live: null },
+    screens: [
+      { src: 'projects/interntrack-dashboard.jpg', alt: 'InternTrack dashboard with application totals, a journey chart and a status donut' },
+      { src: 'projects/interntrack-login.jpg', alt: 'InternTrack login page with the Track it. Apply it. Land it. tagline' },
+      { src: 'projects/interntrack-add.jpg', alt: 'Add new internship form with company and application details' },
+      { src: 'projects/interntrack-interviews.jpg', alt: 'Upcoming interviews list with date filters' },
+      { src: 'projects/interntrack-companies.jpg', alt: 'Companies table showing each company and its furthest stage' },
+      { src: 'projects/interntrack-export.jpg', alt: 'Export page for downloading applications as CSV or PDF' },
+    ],
+    screensNote: 'Screens from the working Django app, run with sample data. Company names are examples.',
     details: {
-      // TODO: review this wording so it matches how your team describes the project.
       problem:
-        'Applying for internships means keeping up with many applications at once. InternTrack gives each application one place to be recorded and followed.',
-      contributions: [],
+        'Applying for internships means keeping up with many applications, deadlines and interviews at once. InternTrack gives each application one place to be recorded and followed, from applied to accepted.',
+      contributions: [
+        'Designed the whole UX/UI in Figma: UX research, user flow, wireframes and the final desktop screens.',
+        'Created the visual system: navy, orange and yellow palette, Poppins type scale, and a colour for each application status.',
+        'Built the frontend from the design: the page templates, CSS and JavaScript for every screen.',
+      ],
+      sections: [
+        { title: 'Design process', items: ['UX research', 'User flow', 'Wireframes', 'High-fidelity desktop UI'] },
+      ],
+      built: [
+        'Login, registration and password reset',
+        'Dashboard with an application-journey chart and a status donut',
+        'Applications list with status filters, plus add, edit and delete',
+        'Application details with a timeline and interviews',
+        'Interviews, Companies, and Search & filter pages',
+        'Export to CSV and PDF, and a Settings page',
+      ],
       challenges: [],
       outcomes: [],
     },

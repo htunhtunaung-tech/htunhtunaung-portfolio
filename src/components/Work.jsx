@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight } from './Icons.jsx';
 import { ProjectCover } from './ProjectCovers.jsx';
 import { Headline, Reveal, SectionLabel } from './Reveal.jsx';
 
-const LINK_LABELS = { github: 'GitHub', live: 'Live demo', site: 'Website' };
+const LINK_LABELS = { github: 'GitHub', live: 'Live demo', site: 'Website', figma: 'Figma design' };
 
 function ProjectCard({ project, number, onOpen, delay }) {
   // Light that follows the pointer across the card.
