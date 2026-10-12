@@ -142,7 +142,7 @@ export const projects = [
     role: 'UX/UI Designer and frontend developer',
     outcome: null,
     tech: ['Figma', 'UX research', 'HTML', 'CSS', 'JavaScript', 'Django', 'PostgreSQL'],
-    links: { figma: 'https://www.figma.com/design/BB33jeuOBuxQAjCmsok66e/InternTrack-%E2%80%94-UX-UI-Master-Design?node-id=0-1', github: null, live: null },
+    links: { figma: 'https://www.figma.com/design/BB33jeuOBuxQAjCmsok66e/InternTrack-%E2%80%94-UX-UI-Master-Design?node-id=0-1', github: 'https://github.com/htunhtunaung-tech/InternTrack', live: null },
     screens: [
       { src: 'projects/interntrack-dashboard.jpg', alt: 'InternTrack dashboard with application totals, a journey chart and a status donut' },
       { src: 'projects/interntrack-login.jpg', alt: 'InternTrack login page with the Track it. Apply it. Land it. tagline' },
