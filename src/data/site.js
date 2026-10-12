@@ -17,7 +17,7 @@ export const settings = {
   // Show your phone number in the contact section.
   showPhone: true,
   // Set to true to publish with only your real projects.
-  hidePlaceholderProjects: false,
+  hidePlaceholderProjects: true,
   // Contact form endpoint. Comes from the VITE_FORM_ENDPOINT environment
   // variable (see README). Empty = the form opens the visitor's email app.
   formEndpoint: import.meta.env.VITE_FORM_ENDPOINT || '',
