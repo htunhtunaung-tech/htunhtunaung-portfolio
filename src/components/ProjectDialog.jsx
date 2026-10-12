@@ -120,6 +120,16 @@ export function ProjectDialog({ project, onClose }) {
               </Block>
             )}
 
+            {d.sections?.map((section) => (
+              <Block title={section.title} index={block++} key={section.title}>
+                <ul className="sheet__list">
+                  {section.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </Block>
+            ))}
+
             {d.challenges?.length > 0 && (
               <Block title="Challenges" index={block++}>
                 {d.challenges.map((item) => (
@@ -138,6 +148,19 @@ export function ProjectDialog({ project, onClose }) {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
+              </Block>
+            )}
+
+            {p.screens?.length > 0 && (
+              <Block title="Screens" index={block++}>
+                <div className="sheet__screens">
+                  {p.screens.map((screen) => (
+                    <a key={screen.src} className="sheet__screen" href={screen.src} target="_blank" rel="noreferrer">
+                      <img src={screen.src} alt={screen.alt} loading="lazy" />
+                    </a>
+                  ))}
+                </div>
+                {p.screensNote && <p className="sheet__note">{p.screensNote}</p>}
               </Block>
             )}
 
