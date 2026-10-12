@@ -164,7 +164,7 @@ export const projects = [
     role: 'Interactive Designer for the whole project',
     outcome: 'Presented in the Interaction Programming course, 31 March 2026',
     tech: ['Python', 'PySide6 (Qt)', 'CSV storage', 'Dark & light themes'],
-    links: { github: null, live: null },
+    links: { github: 'https://github.com/htunhtunaung-tech/ClickJoy_htunhtunaung', live: null },
     screens: [
       { src: 'projects/clickjoy-menu.jpg', alt: 'ClickJoy main menu with score, streak and the list of mini-games' },
       { src: 'projects/clickjoy-normal.jpg', alt: 'Normal Click mini-game with a glowing TAP button' },
