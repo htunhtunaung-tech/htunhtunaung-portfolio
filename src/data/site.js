@@ -399,7 +399,7 @@ export const contact = {
     { text: "Let's build something meaningful.", accent: true, newline: true },
   ],
   email: 'htunhtunaung.h@kkumail.com',
-  phone: '+66 61 604 3800',
+  phone: '+66 061 604 3800',
   // Full URLs, e.g. 'https://www.linkedin.com/in/your-handle'. null = hidden.
   linkedin: 'https://www.linkedin.com/in/htun-htun-aung-a282a8346',
   github: 'https://github.com/htunhtunaung-tech',
@@ -407,7 +407,7 @@ export const contact = {
   facebook: 'https://www.facebook.com/louisleohtun', // e.g. 'https://www.facebook.com/your.name'
   instagram: 'https://www.instagram.com/htun_louis/', // e.g. 'https://www.instagram.com/your.handle'
   line: 'https://line.me/ti/p/edXeabUw9S', // e.g. 'https://line.me/ti/p/~your-line-id'
-  whatsapp: 'https://wa.me/66616043800', // e.g. 'https://wa.me/66612345678' (country code + number, no + or spaces)
+  whatsapp: 'https://wa.me/660616043800', // e.g. 'https://wa.me/66612345678' (country code + number, no + or spaces)
 };
 
 export const navLinks = [
