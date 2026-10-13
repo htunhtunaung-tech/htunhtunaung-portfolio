@@ -407,7 +407,7 @@ export const contact = {
   facebook: 'https://www.facebook.com/louisleohtun', // e.g. 'https://www.facebook.com/your.name'
   instagram: 'https://www.instagram.com/htun_louis/', // e.g. 'https://www.instagram.com/your.handle'
   line: 'https://line.me/ti/p/edXeabUw9S', // e.g. 'https://line.me/ti/p/~your-line-id'
-  whatsapp: 'https://wa.me/660616043800', // e.g. 'https://wa.me/66612345678' (country code + number, no + or spaces)
+  whatsapp: 'https://wa.me/66616043800', // e.g. 'https://wa.me/66612345678' (country code + number, no + or spaces)
 };
 
 export const navLinks = [
