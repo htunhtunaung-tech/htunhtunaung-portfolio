@@ -1,4 +1,4 @@
-import { projects, settings } from '../data/site.js';
+import { contact, projects, settings } from '../data/site.js';
 import { ArrowRight, ArrowUpRight } from './Icons.jsx';
 import { ProjectCover } from './ProjectCovers.jsx';
 import { Headline, Reveal, SectionLabel } from './Reveal.jsx';
@@ -116,6 +116,15 @@ export function Work({ onOpen }) {
             ))}
           </div>
         </div>
+
+        {contact.github && (
+          <Reveal as="p" className="work-profile" delay={100}>
+            <a className="link-btn link-btn--quiet" href={contact.github} target="_blank" rel="noreferrer">
+              <span>See all my code on GitHub</span>
+              <ArrowUpRight size={14} />
+            </a>
+          </Reveal>
+        )}
       </div>
     </section>
   );
