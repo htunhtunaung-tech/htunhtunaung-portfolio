@@ -303,7 +303,7 @@ export const projects = [
     cover: 'browser',
     image: 'projects/chaiyo-cover.jpg',
     featured: true,
-    role: 'Frontend developer (public pages and staff area); automatic points in this version',
+    role: 'Frontend Developer & UX/UI design',
     outcome: null,
     tech: ['HTML', 'CSS', 'JavaScript', 'Django REST Framework', 'PostgreSQL'],
     links: { github: null, live: null },
@@ -314,8 +314,11 @@ export const projects = [
       { src: 'projects/chaiyo-athletes.jpg', alt: 'Athletes page with search and a country filter' },
       { src: 'projects/chaiyo-dashboard.jpg', alt: 'Staff dashboard with events needing attention and what is coming up' },
       { src: 'projects/chaiyo-admin.jpg', alt: 'Admin page for users and roles' },
+      { src: 'projects/chaiyo-light.jpg', alt: 'Chai-Yo Para medal table in light mode' },
+      { src: 'projects/chaiyo-dark.jpg', alt: 'Chai-Yo Para medal table in dark mode' },
+      { src: 'projects/chaiyo-contrast.jpg', alt: 'Chai-Yo Para medal table in high-contrast mode' },
     ],
-    screensNote: 'Screens from the project. The live pages run on sample data, and the names and results in them are not real.',
+    screensNote: 'Screens from the project. The live pages run on sample data, and the names and results in them are not real. The last three show the accessibility display options: light, dark and high contrast.',
     details: {
       problemTitle: 'The problem',
       problem:
