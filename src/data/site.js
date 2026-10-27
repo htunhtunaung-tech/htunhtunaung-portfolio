@@ -303,7 +303,7 @@ export const projects = [
     cover: 'browser',
     image: 'projects/chaiyo-cover.jpg',
     featured: true,
-    role: 'Frontend Developer & UX/UI design',
+    role: 'Frontend Developer & UX/UI designer',
     outcome: null,
     tech: ['HTML', 'CSS', 'JavaScript', 'Django REST Framework', 'PostgreSQL'],
     links: { github: null, live: null },
