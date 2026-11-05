@@ -306,7 +306,7 @@ export const projects = [
     role: 'Frontend Developer & UX/UI designer',
     outcome: null,
     tech: ['HTML', 'CSS', 'JavaScript', 'Django REST Framework', 'PostgreSQL'],
-    links: { github: null, live: null },
+    links: { github: 'https://github.com/htunhtunaung-tech/chaiyo_para-htunhtunaung', live: null },
     screens: [
       { src: 'projects/chaiyo-cover.jpg', alt: 'Chai-Yo Para live medal table with the leading country and medal counts' },
       { src: 'projects/chaiyo-podium.jpg', alt: 'Event page with the podium, including a tie shared by two athletes' },
