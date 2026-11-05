@@ -477,3 +477,54 @@
     flex: 1 1 100%;
   }
 }
+
+/* Liquid name */
+.liquid {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  overflow: visible;
+  touch-action: pan-y;
+}
+.liquid__drop {
+  animation: drop-float 7s var(--ease-in-out) infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.liquid__drop--a { animation-duration: 6s; }
+.liquid__drop--b { animation-duration: 8s; animation-delay: -2s; }
+.liquid__drop--c { animation-duration: 9s; animation-delay: -4s; }
+.liquid__drop--d { animation-duration: 5s; animation-delay: -1s; }
+@keyframes drop-float {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-22px, -30px) scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .liquid__drop { animation: none; }
+}
+
+/* Globe + liquid word */
+.hero__combo {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.hero__combo-word {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.hero__combo-word .liquid {
+  width: 64%;
+  transform: translateY(-2%);
+  pointer-events: auto;
+}
+
+.hero__combo-word .liquid__drop--a,
+.hero__combo-word .liquid__drop--c {
+  display: none;
+}

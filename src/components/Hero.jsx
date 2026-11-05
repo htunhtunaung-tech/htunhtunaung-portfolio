@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { profile, settings } from '../data/site.js';
 import { ArrowRight, ArrowUpRight } from './Icons.jsx';
+import { LiquidName } from './LiquidName.jsx';
 import { OrbitVisual } from './OrbitVisual.jsx';
 import { ResumeLink } from './ResumeLink.jsx';
 import { Headline } from './Reveal.jsx';
@@ -63,7 +64,12 @@ export function Hero() {
         </div>
 
         <div className="hero__visual hero-in hero-in--scale" style={{ '--n': 3 }}>
-          <OrbitVisual />
+          <div className="hero__combo">
+            <OrbitVisual />
+            <div className="hero__combo-word">
+              <LiquidName text="HELLO" />
+            </div>
+          </div>
         </div>
       </div>
 
