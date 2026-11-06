@@ -114,7 +114,7 @@ export function Contact() {
       <div className="contact__glow" aria-hidden="true" />
       <div className="container contact__inner">
         <div className="contact__info">
-          <SectionLabel number="06">Resume &amp; contact</SectionLabel>
+          <SectionLabel number="05">Resume &amp; contact</SectionLabel>
           <Headline parts={contact.heading} className="contact__title" />
 
           <ul className="contact__rows">

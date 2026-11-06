@@ -67,3 +67,15 @@ export const Alert = (props) => (
     <path d="M12 7v6M12 16.5v.5" />
   </Svg>
 );
+export const Pin = (props) => (
+  <Svg {...props}>
+    <path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21Z" />
+    <circle cx="12" cy="9.5" r="2.5" />
+  </Svg>
+);
+export const Cap = (props) => (
+  <Svg {...props}>
+    <path d="m2 9 10-5 10 5-10 5L2 9Z" />
+    <path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" />
+  </Svg>
+);

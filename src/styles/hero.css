@@ -1,99 +1,76 @@
-/* Hero: entrance sequence, pointer light, and the orbit object. */
+/* Hero: entrance sequence, the ring sculpture, and the "at a glance" strip. */
 
 .hero {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: min(860px, calc(100svh - var(--nav-h)));
+  min-height: min(880px, calc(100svh - var(--nav-h)));
   overflow: hidden;
-  --mx: 70%;
-  --my: 40%;
 }
 
+/* Fine engineering grid, faded toward the edges */
 .hero__grid {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 72% 42%, #000 10%, transparent 78%);
-  mask-image: radial-gradient(ellipse 70% 80% at 72% 42%, #000 10%, transparent 78%);
-}
-/* The grid drifts slowly; it moves with a transform so it stays cheap to animate. */
-.hero__grid::before {
-  content: '';
-  position: absolute;
-  inset: -80px;
   background-image: linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 80px 80px;
-  animation: grid-drift 36s linear infinite;
-}
-@keyframes grid-drift {
-  to {
-    transform: translate3d(80px, 80px, 0);
-  }
-}
-
-/* Soft light that trails the pointer */
-.hero__spot {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(520px circle at var(--mx) var(--my), var(--accent-soft), transparent 70%);
+  background-size: 96px 96px;
+  background-position: -1px -1px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 70% 45%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 60% 70% at 70% 45%, #000 0%, transparent 75%);
   pointer-events: none;
 }
 
 .hero__inner {
   position: relative;
   flex: 1;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   align-items: center;
-  gap: 56px 64px;
-  padding-block: 72px 56px;
+  gap: 48px;
+  padding-block: 40px 40px;
 }
 
 .hero__copy {
-  flex: 1.25 1 520px;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 28px;
 }
 
 /* Entrance: each piece fades up in order (--n sets the order). */
 .hero-in {
   animation: hero-in 0.9s var(--ease) both;
-  animation-delay: calc(var(--n, 0) * 90ms + 120ms);
+  animation-delay: calc(var(--n, 0) * 80ms + 100ms);
 }
 .hero-in--scale {
   animation-name: hero-in-scale;
-  animation-duration: 1.4s;
+  animation-duration: 1.6s;
 }
 @keyframes hero-in {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(18px);
   }
 }
 @keyframes hero-in-scale {
   from {
     opacity: 0;
-    transform: scale(0.86);
+    transform: scale(0.9) rotate(-6deg);
   }
 }
 
 .status {
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
-  padding: 8px 14px;
+  padding: 7px 14px 7px 12px;
   border: 1px solid var(--line-2);
   border-radius: 999px;
-  background: var(--glass);
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   letter-spacing: 0.1em;
-  line-height: 1.6;
+  line-height: 1.5;
   text-transform: uppercase;
   color: var(--text-2);
 }
@@ -102,21 +79,20 @@
   flex: 0 0 auto;
   width: 7px;
   height: 7px;
-  margin-top: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--ok);
 }
 .status__dot::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: var(--accent);
-  animation: ping 2.4s var(--ease) infinite;
+  background: var(--ok);
+  animation: ping 2.6s var(--ease) infinite;
 }
 @keyframes ping {
   to {
-    transform: scale(3.4);
+    transform: scale(3.2);
     opacity: 0;
   }
 }
@@ -125,44 +101,52 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  margin-top: 32px;
 }
 .hero__avatar {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--line-2);
 }
 .hero__name {
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 .hero__role {
-  margin-top: 2px;
+  margin-top: 4px;
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
 .hero__title {
-  font-size: clamp(42px, 5.7vw, 82px);
-  line-height: 0.98;
-  letter-spacing: -0.038em;
+  margin-top: 24px;
+  font-size: clamp(44px, 5.6vw, 80px);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
   font-weight: 500;
   text-wrap: balance;
 }
 .hero__title .headline__word > span {
-  transition-delay: calc(var(--i) * 60ms + 320ms);
+  transition-delay: calc(var(--i) * 55ms + 280ms);
 }
 
 .hero__intro {
-  max-width: 540px;
+  max-width: 34em;
+  margin-top: 24px;
   font-size: 18px;
   line-height: 1.6;
   color: var(--muted);
+}
+.hero__intro strong {
+  font-weight: 500;
+  color: var(--text);
 }
 
 .hero__actions {
@@ -170,361 +154,253 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 14px;
-  margin-top: 8px;
+  margin-top: 32px;
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 22px;
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.hero__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero__meta svg {
+  color: var(--label);
 }
 
 .hero__visual {
-  flex: 1 1 400px;
   min-width: 0;
   display: flex;
   justify-content: center;
 }
 
-.hero__strip {
+/* ---------- At a glance (for recruiters) ---------- */
+
+.glance {
   position: relative;
   border-top: 1px solid var(--line);
+  background: var(--bg);
 }
-.hero__strip-inner {
+.glance__inner {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.glance__item {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px 40px;
-  padding-block: 12px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 24px 22px 0;
+}
+.glance__item + .glance__item {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+.glance__label {
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.08em;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--label);
 }
-.hero__strip strong {
-  font-weight: 400;
+.glance__value {
+  font-size: 14.5px;
+  line-height: 1.5;
   color: var(--text-2);
 }
-
-.scroll-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 44px;
-  color: var(--text-2);
+.glance__value a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
 }
-.scroll-cue__line {
-  position: relative;
-  width: 44px;
-  height: 1px;
-  overflow: hidden;
-  background: var(--line-2);
-}
-.scroll-cue__line::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  animation: cue 2.2s var(--ease-in-out) infinite;
-}
-@keyframes cue {
-  0% {
-    transform: translateX(-100%);
-  }
-  55%,
-  100% {
-    transform: translateX(100%);
-  }
+.glance__value a:hover {
+  text-decoration-color: var(--accent);
 }
 
-/* ---------- Orbit object ---------- */
+/* ---------- Ring sculpture ---------- */
 
-.orbit {
+.sculpture {
   position: relative;
   width: 100%;
   max-width: 520px;
-  aspect-ratio: 1 / 1;
-  perspective: 900px;
+  aspect-ratio: 1;
 }
-.orbit__glow {
+.sculpture__glow {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 26%, transparent), transparent 70%),
+    radial-gradient(closest-side at 65% 60%, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 75%);
+  filter: blur(18px);
+}
+.sculpture__field {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 2%;
+  height: 34%;
+  width: 120%;
+  fill: color-mix(in srgb, var(--accent) 70%, var(--muted));
+  opacity: 0.7;
+  transform: perspective(420px) rotateX(62deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: radial-gradient(ellipse 50% 90% at 50% 100%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 50% 90% at 50% 100%, #000 20%, transparent 75%);
+}
+.sculpture__stage {
   position: absolute;
   inset: 6%;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 66%);
-  filter: blur(24px);
-  animation: breathe 7s ease-in-out infinite;
+  perspective: 1100px;
 }
-@keyframes breathe {
-  50% {
-    transform: scale(1.08);
-    opacity: 0.75;
-  }
-}
-
-.orbit__corner {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border: 0 solid var(--line-strong);
-}
-.orbit__corner--tl {
-  top: 0;
-  left: 0;
-  border-top-width: 1px;
-  border-left-width: 1px;
-}
-.orbit__corner--tr {
-  top: 0;
-  right: 0;
-  border-top-width: 1px;
-  border-right-width: 1px;
-}
-.orbit__corner--bl {
-  bottom: 0;
-  left: 0;
-  border-bottom-width: 1px;
-  border-left-width: 1px;
-}
-.orbit__corner--br {
-  bottom: 0;
-  right: 0;
-  border-bottom-width: 1px;
-  border-right-width: 1px;
-}
-.orbit__coord {
-  position: absolute;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--label);
-}
-.orbit__coord--tl {
-  top: 8px;
-  left: 30px;
-}
-.orbit__coord--br {
-  right: 30px;
-  bottom: 8px;
-}
-
-.orbit__tilt {
+.sculpture__tilt,
+.sculpture__spin {
   position: absolute;
   inset: 0;
-  transform-style: flat;
-  will-change: transform;
+  transform-style: preserve-3d;
 }
-
-.orbit__ring {
-  position: absolute;
-  left: 0;
-  top: 35%;
-  width: 100%;
-  height: 30%;
-  border: 1px solid var(--line-2);
-  border-radius: 50%;
-  transform: rotate(-16deg);
+.sculpture__tilt {
+  transition: transform 0.2s linear;
 }
-.orbit__ring--back {
-  z-index: 1;
+.sculpture__spin {
+  animation: sculpture-spin 48s linear infinite;
 }
-.orbit__ring--front {
-  z-index: 3;
-  border-color: var(--line-strong);
-  clip-path: inset(50% 0 0 0);
+.sculpture.is-paused .sculpture__spin,
+.sculpture.is-paused .sculpture__ring {
+  animation-play-state: paused;
 }
-.orbit__ring--dashed {
-  left: 7%;
-  top: 18%;
-  width: 86%;
-  height: 64%;
-  border-style: dashed;
-  border-color: var(--line);
-  transform: rotate(28deg);
-  animation: spin-dashed 120s linear infinite;
-}
-@keyframes spin-dashed {
+@keyframes sculpture-spin {
+  from {
+    transform: rotateX(-14deg) rotateY(0deg);
+  }
   to {
-    transform: rotate(388deg);
+    transform: rotateX(-14deg) rotateY(360deg);
   }
 }
 
-.orbit__sphere {
+.sculpture__ring {
   position: absolute;
-  left: 22%;
-  top: 22%;
-  width: 56%;
-  height: 56%;
-  z-index: 2;
-  animation: float 9s ease-in-out infinite;
-}
-@keyframes float {
-  50% {
-    transform: translateY(-10px);
-  }
-}
-.orbit__ball {
-  position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  aspect-ratio: 1;
+  margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 30% 26%,
-    #ffffff 0%,
-    #dde6ff 5%,
-    var(--accent) 30%,
-    var(--sphere-mid) 62%,
-    var(--sphere-end) 100%
+  background: conic-gradient(
+    from calc(var(--i) * 47deg),
+    var(--metal-1) 0deg,
+    var(--metal-2) 40deg,
+    var(--metal-hi) 62deg,
+    var(--metal-2) 84deg,
+    var(--metal-1) 140deg,
+    var(--metal-3) 200deg,
+    var(--metal-hi-2) 228deg,
+    var(--metal-3) 252deg,
+    var(--metal-1) 310deg,
+    var(--metal-2) 360deg
   );
-  box-shadow: inset -18px -26px 60px rgba(0, 0, 0, 0.6), 0 44px 80px var(--shadow);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--band)), #000 calc(100% - var(--band) + 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - var(--band)), #000 calc(100% - var(--band) + 1px));
+  backface-visibility: visible;
 }
-.orbit__lat,
-.orbit__meridian {
+.sculpture__core {
   position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  top: 50%;
+  left: 50%;
+  width: 24%;
+  aspect-ratio: 1;
+  margin: -12% 0 0 -12%;
   border-radius: 50%;
-}
-.orbit__lat {
-  left: 0;
-  top: 35%;
-  width: 100%;
-  height: 30%;
-}
-/* Meridians squeeze and widen in turn, which reads as the globe rotating. */
-.orbit__meridian {
-  inset: 0;
-  animation: meridian 16s linear infinite;
-}
-.orbit__meridian:nth-of-type(4) {
-  animation-delay: -5.33s;
-}
-.orbit__meridian:nth-of-type(5) {
-  animation-delay: -10.66s;
-}
-@keyframes meridian {
-  0% {
-    transform: scaleX(1);
-    animation-timing-function: cubic-bezier(0.47, 0, 0.74, 0.71);
-  }
-  50% {
-    transform: scaleX(0);
-    animation-timing-function: cubic-bezier(0.39, 0.58, 0.57, 1);
-  }
-  100% {
-    transform: scaleX(1);
-  }
+  background: radial-gradient(circle at 34% 30%, var(--metal-hi) 0%, var(--accent) 28%, var(--metal-3) 62%, var(--metal-1) 100%);
+  box-shadow: 0 0 60px -6px var(--accent-glow);
 }
 
-.orbit__node {
+.sculpture__caption {
   position: absolute;
   left: 50%;
-  top: 50%;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 11px;
-  border: 1px solid var(--line-2);
-  border-radius: 6px;
-  background: var(--chip-bg);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  top: 100%;
+  margin-top: 6px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--label);
   white-space: nowrap;
-  color: var(--text-2);
-  will-change: transform, opacity;
 }
-.orbit__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
+.sculpture__caption span + span::before {
+  content: '·';
+  margin-right: 18px;
+  color: var(--line-strong);
 }
 
-@media (max-width: 860px) {
+@media (prefers-reduced-motion: reduce) {
+  .sculpture__spin {
+    animation: none;
+    transform: rotateX(-14deg) rotateY(28deg);
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 980px) {
   .hero__inner {
-    padding-block: 32px 40px;
-    gap: 40px;
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 40px 40px;
+    gap: 24px;
   }
-  .hero__copy {
-    gap: 20px;
+  .sculpture {
+    max-width: min(72vw, 320px);
+    margin-bottom: 28px;
   }
-  .status {
-    border-radius: 10px;
-    font-size: 10.5px;
+  .glance__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .hero__intro {
-    font-size: 16px;
+  .glance__item:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
   }
-  .hero__visual {
-    flex-basis: 100%;
-  }
-  .orbit {
-    max-width: min(74vw, 400px);
-  }
-  .orbit__node {
-    padding: 5px 8px;
-    font-size: 10px;
-  }
-  .hero__strip-inner p:nth-child(2) {
-    display: none;
+  .glance__item:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
   }
 }
 
 @media (max-width: 560px) {
+  .hero__id {
+    margin-top: 28px;
+  }
+  .hero__intro {
+    font-size: 16px;
+  }
   .hero__actions {
     align-self: stretch;
   }
   .hero__actions .btn {
     flex: 1 1 100%;
   }
+  .glance__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .glance__item,
+  .glance__item + .glance__item {
+    padding: 16px 0;
+    border-left: 0;
+  }
+  .glance__item + .glance__item {
+    border-top: 1px solid var(--line);
+  }
 }
 
-/* Liquid name */
-.liquid {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  overflow: visible;
-  touch-action: pan-y;
-}
-.liquid__drop {
-  animation: drop-float 7s var(--ease-in-out) infinite alternate;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.liquid__drop--a { animation-duration: 6s; }
-.liquid__drop--b { animation-duration: 8s; animation-delay: -2s; }
-.liquid__drop--c { animation-duration: 9s; animation-delay: -4s; }
-.liquid__drop--d { animation-duration: 5s; animation-delay: -1s; }
-@keyframes drop-float {
-  from { transform: translate(0, 0) scale(1); }
-  to { transform: translate(-22px, -30px) scale(1.12); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .liquid__drop { animation: none; }
-}
-
-/* Globe + liquid word */
-.hero__combo {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.hero__combo-word {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-}
-.hero__combo-word .liquid {
-  width: 64%;
-  transform: translateY(-2%);
-  pointer-events: auto;
-}
-
-.hero__combo-word .liquid__drop--a,
-.hero__combo-word .liquid__drop--c {
-  display: none;
+.hero__nick {
+  font-weight: 400;
+  color: var(--muted);
 }

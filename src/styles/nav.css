@@ -6,12 +6,10 @@
   z-index: 50;
   background: transparent;
   border-bottom: 1px solid var(--line);
-  transition: background-color 0.35s ease, backdrop-filter 0.35s ease;
+  transition: background-color 0.35s ease;
 }
 .nav.is-scrolled {
   background: var(--nav-bg);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  backdrop-filter: blur(16px) saturate(140%);
 }
 
 .nav__progress {
@@ -263,42 +261,4 @@
   .logo {
     font-size: 12.5px;
   }
-}
-
-/* Floating glass pill */
-.nav,
-.nav.is-scrolled {
-  background: transparent;
-  border-bottom: 0;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  padding-top: 14px;
-}
-.nav__inner {
-  height: 60px;
-  padding-inline: 22px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line-2);
-  background: color-mix(in srgb, var(--surface) 86%, transparent);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
-  backdrop-filter: blur(22px) saturate(160%);
-  box-shadow: 0 10px 40px -12px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  max-width: min(1180px, calc(100% - 2 * var(--gutter)));
-}
-.nav__progress {
-  display: none;
-}
-.nav__indicator {
-  display: none;
-}
-.nav__link.is-active {
-  color: var(--text);
-}
-.nav__actions .btn,
-.nav__actions .icon-btn {
-  border-radius: 999px;
-}
-@media (max-width: 860px) {
-  .nav { padding-top: 10px; }
-  .nav__inner { max-width: calc(100% - 24px); height: 56px; padding-inline: 18px 6px; }
 }

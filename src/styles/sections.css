@@ -1,4 +1,4 @@
-/* About, Skills, Experience and Approach. */
+/* About, Skills and Experience. */
 
 /* ---------- About ---------- */
 
@@ -196,13 +196,8 @@
   flex: 1.5 1 520px;
   gap: 0;
 }
-/* On wide screens the education cards stay in view beside the longer list. */
-@media (min-width: 1040px) {
-  .exp__col:first-child {
-    position: sticky;
-    top: calc(var(--nav-h) + 32px);
-    align-self: flex-start;
-  }
+.exp__col--wide .exp__heading {
+  padding-bottom: 16px;
 }
 .exp__heading {
   font-family: var(--font-mono);
@@ -267,19 +262,51 @@
   color: var(--text-2);
 }
 
+.timeline {
+  position: relative;
+  border-top: 1px solid var(--line-strong);
+}
 .timeline__row {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 6px 24px;
-  padding: 20px 0;
+  padding: 22px 0 22px 28px;
   border-bottom: 1px solid var(--line);
+}
+/* Vertical rail with a dot for each role */
+.timeline__row::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line-2);
+}
+.timeline__dot {
+  position: absolute;
+  left: 0;
+  top: 29px;
+  z-index: 1;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline__row:hover .timeline__dot,
+.timeline__row:first-child .timeline__dot {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 .timeline__row::before {
   content: '';
   position: absolute;
-  inset: 0 -16px;
+  inset: 0 -16px 0 12px;
   border-radius: 8px;
   background: var(--accent-soft);
   opacity: 0;
@@ -291,7 +318,7 @@
 }
 .timeline__period {
   position: relative;
-  flex: 0 0 170px;
+  flex: 0 0 160px;
   font-family: var(--font-mono);
   font-size: 11.5px;
   letter-spacing: 0.08em;
@@ -318,57 +345,6 @@
   position: relative;
 }
 
-/* ---------- Approach ---------- */
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
-  gap: 32px 24px;
-  margin-top: 64px;
-}
-.step {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-/* The bar fills as you scroll (driven from Approach.jsx). */
-.step__bar {
-  display: block;
-  height: 2px;
-  background: var(--line-2);
-  overflow: hidden;
-}
-.step__bar span {
-  display: block;
-  height: 100%;
-  background: var(--accent);
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 0.25s linear;
-}
-.step__num {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  color: var(--label);
-  transition: color 0.4s ease;
-}
-.step__text {
-  font-size: 22px;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--muted);
-  transform: translateY(6px);
-  transition: color 0.5s ease, transform 0.6s var(--ease);
-}
-.step.is-active .step__num {
-  color: var(--accent);
-}
-.step.is-active .step__text {
-  color: var(--text);
-  transform: none;
-}
-
 @media (max-width: 900px) {
   .about__body,
   .about__body.has-photo {
@@ -390,10 +366,270 @@
     grid-column: 1 / -1;
     grid-row: 2;
   }
-  .steps {
-    gap: 28px;
+}
+
+/* ---------- About: pillars and "How I work" ---------- */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 72px;
+}
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease), border-color 0.3s ease;
+  transition-delay: var(--d, 0ms), var(--d, 0ms), 0ms;
+}
+.pillar:hover {
+  border-color: var(--line-strong);
+}
+.pillar__num {
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+.pillar__title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text);
+}
+.pillar__text {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.how {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 24px 48px;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.how__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.how__steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+  counter-reset: none;
+}
+.how__step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+.how__num {
+  position: relative;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+
+/* ---------- Skills: category cards ---------- */
+
+.skillset {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 56px;
+}
+.skillcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 26px 26px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease), border-color 0.3s ease;
+  transition-delay: var(--d, 0ms), var(--d, 0ms), 0ms;
+}
+.skillcard:hover {
+  border-color: var(--line-strong);
+}
+.skillcard__head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.skillcard__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+.skillcard__title {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+.skillcard__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skillcard__items li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 12px 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 14px;
+  color: var(--text-2);
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.3s var(--ease);
+}
+.skillcard__items li:hover {
+  border-color: var(--line-strong);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+.skillcard__items .skill-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+  transform: none;
+}
+.skillcard__note {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.skillcard__proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.skillcard__proof-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+.proof-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+.proof-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* ---------- Experience: programs and certificates ---------- */
+
+.creds {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+.cred {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cred__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cred__title {
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.cred__detail {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.cred__year {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--label);
+}
+.cred__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--muted);
+}
+
+@media (max-width: 1080px) {
+  .skillset,
+  .pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .step {
-    gap: 12px;
+  .how {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .skillset {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .how__steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .how__step {
+    flex-direction: row;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .how__num {
+    padding: 2px 0 0;
+    border: 0;
+  }
+  .pillars {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 48px;
   }
 }

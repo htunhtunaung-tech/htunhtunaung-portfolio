@@ -32,6 +32,9 @@ function ProjectCard({ project, number, onOpen, delay, compact = false }) {
     const rect = event.currentTarget.getBoundingClientRect();
     event.currentTarget.style.setProperty('--mx', `${event.clientX - rect.left}px`);
     event.currentTarget.style.setProperty('--my', `${event.clientY - rect.top}px`);
+    // -1 … 1 across the card, used to drift the screenshot a little (parallax).
+    event.currentTarget.style.setProperty('--px', ((event.clientX - rect.left) / rect.width - 0.5) * 2);
+    event.currentTarget.style.setProperty('--py', ((event.clientY - rect.top) / rect.height - 0.5) * 2);
   };
 
   const links = Object.entries(project.links || {}).filter(([, url]) => url);
@@ -60,6 +63,11 @@ function ProjectCard({ project, number, onOpen, delay, compact = false }) {
         {compact && project.role && (
           <p className="project__role">
             <span>Role</span> {project.role}
+          </p>
+        )}
+        {compact && project.outcome && (
+          <p className="project__role project__role--result">
+            <span>Result</span> {project.outcome}
           </p>
         )}
 
@@ -126,7 +134,7 @@ export function Work({ onOpen }) {
   return (
     <section id="work" className="section section--alt">
       <div className="container">
-        <SectionLabel number="02">Selected work</SectionLabel>
+        <SectionLabel number="01">Selected work</SectionLabel>
         <div className="section-head">
           <Headline parts={[{ text: 'Selected' }, { text: 'work', accent: true }]} className="section-title" />
           <Reveal as="p" className="section-head__note" delay={150}>

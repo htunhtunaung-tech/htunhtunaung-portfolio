@@ -28,14 +28,14 @@ export const profile = {
   nickname: 'Louis',
   logo: 'HTUN.HTUN.AUNG',
   role: 'Full-Stack Developer & Software Engineer',
-  status: 'Open to internships & software engineering opportunities',
+  status: 'Open to internships & software engineering roles',
   // Headline parts: `accent: true` renders in the italic serif accent.
   heroTitle: [
-    { text: 'I Build Digital Experiences That Solve' },
-    { text: 'Real Problems.', accent: true },
+    { text: 'Building Digital Experiences That' },
+    { text: 'Make a Difference.', accent: true },
   ],
   intro:
-    'Full-stack developer and software engineer with a growing interest in data analytics. I study Digital Media Engineering and Computer Science, and build web applications designed to be useful, reliable and easy to use.',
+    "I'm Htun Htun Aung, a Full-Stack Developer and Digital Media Engineering student exploring the intersection of software engineering, AI, and creative technology.",
   location: 'Khon Kaen, Thailand',
   coordinates: '16.47° N · 102.82° E',
   timezone: 'UTC+07',
@@ -47,6 +47,13 @@ export const profile = {
   resume: "Htun-Htun-Aung-CV.pdf",
 };
 
+// The "at a glance" strip under the hero: what a recruiter needs in 10 seconds.
+export const glance = [
+  { label: 'Focus', value: 'Full-stack web apps, from UI design to database and tests' },
+  { label: 'Core stack', value: 'React · Next.js · TypeScript · Python · Django · PostgreSQL' },
+  { label: 'Education', value: 'B.Eng Digital Media Eng. + B.Sc Computer Science, both fully funded' },
+];
+
 export const about = {
   statement: [
     { text: 'I combine software engineering,' },
@@ -56,6 +63,13 @@ export const about = {
   paragraphs: [
     "I'm a technology enthusiast and aspiring software engineer passionate about building useful, thoughtful, and engaging digital experiences. Through my studies in Digital Media Engineering and Computer Science, I explore the intersection of software development, data, and creative technology.",
     "Beyond coding, I've been involved in STEM education and digital literacy initiatives, helping young people access technology and develop practical skills. My goal is to keep building meaningful products, grow as an engineer, and use technology to create opportunities for others.",
+  ],
+  // Four short lines on who I am, shown beside the photo.
+  pillars: [
+    { title: 'Full-stack developer', text: 'Web apps from interface to database, with tests and deployment.' },
+    { title: 'Digital Media Engineering student', text: 'Second year at Khon Kaen University, alongside Computer Science at UoPeople.' },
+    { title: 'AI and creative computing', text: 'Exploring machine learning, data and 3D on the web.' },
+    { title: 'STEM education advocate', text: 'Founder of TechTrek Edu, teaching STEM and programming since 2021.' },
   ],
   facts: [
     { label: 'Studying', value: 'B.Eng Digital Media Engineering', detail: 'Khon Kaen University, Thailand' },
@@ -432,13 +446,38 @@ export const projects = [
 ];
 
 // Only list tools you can talk about in an interview.
+// usedIn: project ids from the list above; they become links that open that project.
 export const skills = [
-  { group: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React'] },
-  { group: 'Backend', items: ['Python', 'Java', 'C++', 'Django', 'PostgreSQL', 'APIs'] },
-  { group: 'Data & Analytics', items: ['SQL', 'Data analysis', 'Data visualization'] },
   {
-    group: 'Creative Technology',
-    items: ['UI/UX design', 'Figma', 'Graphic design', 'Blender', '3D modeling', 'Digital media production'],
+    group: 'Frontend Engineering',
+    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS'],
+    usedIn: ['nexus', 'chai-yo-para', 'carego'],
+  },
+  {
+    group: 'Backend Engineering',
+    items: ['Python', 'Django', 'Django REST Framework', 'REST APIs', 'Java', 'C++'],
+    usedIn: ['interntrack', 'chai-yo-para'],
+  },
+  {
+    group: 'Database, Cloud & Testing',
+    items: ['PostgreSQL', 'SQL', 'Supabase', 'Vercel', 'Git', 'Vitest', 'Playwright', 'pytest'],
+    usedIn: ['nexus', 'interntrack', 'asean-digital-divide'],
+  },
+  {
+    group: 'Data, AI & Machine Learning',
+    items: ['pandas', 'scikit-learn', 'statsmodels', 'Streamlit', 'Data visualization'],
+    usedIn: ['asean-digital-divide'],
+    note: 'Courses: Google AI Essentials · AI Foundations: Machine Learning',
+  },
+  {
+    group: 'UI/UX Design',
+    items: ['Figma', 'UX research', 'Prototyping', 'Accessibility', 'Graphic design'],
+    usedIn: ['interntrack', 'chai-yo-para', 'clickjoy'],
+  },
+  {
+    group: '3D & Creative Technology',
+    items: ['Three.js', 'React Three Fiber', 'Blender', '3D modeling', 'Digital media production'],
+    usedIn: ['nexus'],
   },
 ];
 
@@ -447,18 +486,27 @@ export const education = [
     period: '2nd year · Present',
     title: 'B.Eng, Digital Media Engineering',
     place: 'Khon Kaen University, Thailand',
-    note: 'Full four-year scholarship',
+    note: 'Fully funded four-year scholarship',
   },
   {
     period: '2nd year · Present',
     title: 'B.Sc, Computer Science',
     place: 'University of the People, USA',
-    note: 'Full four-year scholarship',
+    note: 'Fully funded four-year scholarship',
   },
 ];
 
-// Verified hackathons, awards or selections: { title, detail, year, link }.
-export const recognition = [];
+// Programs, courses and certificates you have completed: { title, detail, year, link }.
+export const recognition = [
+  { title: 'Aspire Leaders Program', detail: 'Aspire Institute', year: '2026' },
+  { title: 'AI Career Readiness Training', detail: 'ASEAN Foundation · ASEAN Ahead, supported by LinkedIn', year: '2026' },
+  { title: 'Principles of UX/UI Design', detail: 'Coursera', year: null },
+  { title: 'Google AI Essentials', detail: 'Google', year: null },
+  { title: 'AI Foundations: Machine Learning', detail: 'LinkedIn Learning', year: '2026' },
+  { title: 'Full-stack JavaScript: MongoDB, Node and React', detail: 'LinkedIn Learning', year: null },
+  { title: 'How to Get Into Robotics', detail: 'University of Leeds', year: null },
+  { title: 'British Council EnglishScore: C1', detail: 'Core skills · English at CEFR C1', year: '2025' },
+];
 
 // type: 'Leadership' | 'Teaching' | 'Volunteering' | 'Youth org' | 'Work'
 export const experience = [
@@ -491,11 +539,11 @@ export const approach = [
 
 export const contact = {
   heading: [
-    { text: 'Have an interesting problem to solve?' },
-    { text: "Let's build something meaningful.", accent: true, newline: true },
+    { text: 'Have a role or a project in mind?' },
+    { text: "Let's talk.", accent: true, newline: true },
   ],
   email: 'htunhtunaung.h@kkumail.com',
-  phone: '+66 061 604 3800',
+  phone: '+66 61 604 3800',
   // Full URLs, e.g. 'https://www.linkedin.com/in/your-handle'. null = hidden.
   linkedin: 'https://www.linkedin.com/in/htun-htun-aung-a282a8346',
   github: 'https://github.com/htunhtunaung-tech',
@@ -507,10 +555,9 @@ export const contact = {
 };
 
 export const navLinks = [
-  { id: 'about', label: 'About' },
   { id: 'work', label: 'Work' },
+  { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'experience', label: 'Experience' },
-  { id: 'approach', label: 'Approach' },
   { id: 'contact', label: 'Contact' },
 ];

@@ -136,9 +136,13 @@
   transition: transform 0.9s var(--ease);
 }
 .project:hover .cover--browser,
-.project:hover .cover--image,
 .project:hover .cover--wordmark {
   transform: scale(1.03);
+}
+/* Screenshots drift gently with the pointer (see Work.jsx). */
+.project:hover .cover--image {
+  transform: scale(1.06) translate3d(calc(var(--px, 0) * -1.2%), calc(var(--py, 0) * -1.2%), 0);
+  transition-duration: 0.6s;
 }
 .cover__caption {
   position: absolute;
@@ -938,4 +942,14 @@
 }
 .project--compact .project__links .link-btn {
   font-size: 14px;
+}
+
+.project__role--result {
+  color: var(--text-2);
+}
+.project--compact .project__title {
+  transition: color 0.25s ease;
+}
+.project--compact:hover .project__title {
+  color: var(--accent);
 }

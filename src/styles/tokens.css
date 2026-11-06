@@ -1,42 +1,50 @@
 /*
- * Design tokens — "night blueprint".
+ * Design tokens — deep charcoal, off-white type, electric blue and violet accents.
  * Change a colour here and it changes everywhere.
  * Dark is the default theme; the light theme overrides the same names below.
  */
 :root {
   /* Surfaces */
-  --bg: #0a0b0e;
-  --bg-alt: #0c0d11;
-  --surface: #111318;
-  --surface-2: #15181f;
-  --cover: #0d0f14;
+  --bg: #090b10;
+  --bg-alt: #0c0f15;
+  --surface: #11151d;
+  --surface-2: #161b25;
+  --cover: #0d1017;
 
   /* Text */
-  --text: #f4f5f7;
-  --text-2: #c9cdd6;
-  --muted: #a6acb8;
-  --label: #8b91a0;
+  --text: #f5f5f5;
+  --text-2: #c8cdd6;
+  --muted: #9299a6;
+  --label: #858c9a;
 
   /* Lines */
-  --line: rgba(255, 255, 255, 0.09);
-  --line-2: rgba(255, 255, 255, 0.16);
-  --line-strong: rgba(255, 255, 255, 0.28);
-  --grid: rgba(255, 255, 255, 0.045);
+  --line: #252b36;
+  --line-2: #323a48;
+  --line-strong: #4b5466;
+  --grid: rgba(146, 153, 166, 0.07);
   --skeleton: rgba(255, 255, 255, 0.12);
 
-  /* Accent — electric blue. Try #a08bff (violet) or #4cc9f0 (cyan). */
-  --accent: #5b8cff;
+  /* Accents — electric blue, with violet as a quiet second colour. */
+  --accent: #4d8dff;
+  --accent-2: #916bff;
   --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
   --accent-line: color-mix(in srgb, var(--accent) 50%, transparent);
   --accent-glow: color-mix(in srgb, var(--accent) 30%, transparent);
-  --focus: #8fb0ff;
+  --focus: #8fb4ff;
+
+  /* Metal used by the hero sculpture */
+  --metal-1: #0c1226;
+  --metal-2: #3561d6;
+  --metal-3: #4b2fa3;
+  --metal-hi: #eaf1ff;
+  --metal-hi-2: #d9ccff;
 
   /* Components */
-  --btn-bg: #f4f5f7;
-  --btn-fg: #0a0b0e;
+  --btn-bg: #f5f5f5;
+  --btn-fg: #090b10;
   --glass: rgba(255, 255, 255, 0.035);
   --field: rgba(10, 11, 14, 0.6);
-  --nav-bg: rgba(10, 11, 14, 0.72);
+  --nav-bg: rgba(9, 11, 16, 0.92);
   --chip-bg: rgba(10, 11, 14, 0.66);
   --sphere-mid: #1a1e48;
   --sphere-end: #06070a;
@@ -87,14 +95,21 @@
   --grid: rgba(16, 17, 20, 0.06);
   --skeleton: rgba(16, 17, 20, 0.12);
 
-  --accent: #2e5bd9;
-  --focus: #2e5bd9;
+  --accent: #2c5fd6;
+  --accent-2: #6a45d9;
+  --focus: #2c5fd6;
+
+  --metal-1: #101a3a;
+  --metal-2: #2f5ad0;
+  --metal-3: #5636b8;
+  --metal-hi: #f2f6ff;
+  --metal-hi-2: #e3d9ff;
 
   --btn-bg: #101114;
   --btn-fg: #f5f5f2;
   --glass: rgba(255, 255, 255, 0.7);
   --field: #ffffff;
-  --nav-bg: rgba(245, 245, 242, 0.78);
+  --nav-bg: rgba(245, 245, 242, 0.94);
   --chip-bg: rgba(255, 255, 255, 0.8);
   --sphere-mid: #1f2f7a;
   --sphere-end: #0b1030;

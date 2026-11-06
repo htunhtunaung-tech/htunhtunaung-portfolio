@@ -1,27 +1,13 @@
-import { useRef } from 'react';
-import { profile, settings } from '../data/site.js';
-import { ArrowRight, ArrowUpRight } from './Icons.jsx';
-import { LiquidName } from './LiquidName.jsx';
-import { OrbitVisual } from './OrbitVisual.jsx';
+import { contact, glance, profile, settings } from '../data/site.js';
+import { ArrowRight, ArrowUpRight, Cap, Pin } from './Icons.jsx';
 import { ResumeLink } from './ResumeLink.jsx';
 import { Headline } from './Reveal.jsx';
+import { Sculpture } from './Sculpture.jsx';
 
 export function Hero() {
-  const ref = useRef(null);
-
-  // Soft light that follows the pointer across the hero.
-  const onPointerMove = (event) => {
-    const el = ref.current;
-    if (!el || event.pointerType === 'touch') return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${event.clientX - rect.left}px`);
-    el.style.setProperty('--my', `${event.clientY - rect.top}px`);
-  };
-
   return (
-    <section id="top" className="hero" ref={ref} onPointerMove={onPointerMove}>
+    <section id="top" className="hero">
       <div className="hero__grid" aria-hidden="true" />
-      <div className="hero__spot" aria-hidden="true" />
 
       <div className="container hero__inner">
         <div className="hero__copy">
@@ -34,13 +20,13 @@ export function Hero() {
 
           <div className="hero__id hero-in" style={{ '--n': 1 }}>
             {profile.photo && (
-              <img className="hero__avatar" src={profile.photo} alt={`Portrait of ${profile.name}`} width="48" height="48" />
+              <img className="hero__avatar" src={profile.photo} alt="" width="52" height="52" />
             )}
             <div>
-              <p className="hero__name">{profile.name}</p>
-              <p className="hero__role">
-                “{profile.nickname}” · {profile.role}
+              <p className="hero__name">
+                {profile.name} <span className="hero__nick">“{profile.nickname}”</span>
               </p>
+              <p className="hero__role">{profile.role}</p>
             </div>
           </div>
 
@@ -51,41 +37,59 @@ export function Hero() {
           </p>
 
           <div className="hero__actions hero-in" style={{ '--n': 7 }}>
-            <a className="btn btn--primary" href="#work">
+            <a className="btn btn--primary" href="#work" data-magnetic>
               <span>Explore My Work</span>
               <ArrowRight />
             </a>
-            <ResumeLink className="btn btn--ghost" />
-            <a className="text-link" href="#contact">
+            <a className="btn btn--ghost" href="#contact" data-magnetic>
               <span>Let's Connect</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={15} />
             </a>
+            <ResumeLink className="text-link" />
           </div>
+
+          <p className="hero__meta hero-in" style={{ '--n': 8 }}>
+            <span>
+              <Pin size={15} /> {profile.location}
+            </span>
+            <span>
+              <Cap size={15} /> Khon Kaen University · University of the People
+            </span>
+          </p>
         </div>
 
-        <div className="hero__visual hero-in hero-in--scale" style={{ '--n': 3 }}>
-          <div className="hero__combo">
-            <OrbitVisual />
-            <div className="hero__combo-word">
-              <LiquidName text="HELLO" />
-            </div>
-          </div>
+        <div className="hero__visual hero-in hero-in--scale" style={{ '--n': 2 }}>
+          <Sculpture />
         </div>
       </div>
 
-      <div className="hero__strip hero-in" style={{ '--n': 9 }}>
-        <div className="container hero__strip-inner">
-          <p>
-            Based in <strong>{profile.location}</strong>
-          </p>
-          <p>
-            Studying <strong>{profile.studying}</strong>
-          </p>
-          <a className="scroll-cue" href="#about">
-            <span>Scroll</span>
-            <span className="scroll-cue__line" aria-hidden="true" />
-          </a>
-        </div>
+      <div className="glance hero-in" style={{ '--n': 9 }}>
+        <dl className="container glance__inner" aria-label="At a glance">
+          {glance.map((item) => (
+            <div className="glance__item" key={item.label}>
+              <dt className="glance__label">{item.label}</dt>
+              <dd className="glance__value">{item.value}</dd>
+            </div>
+          ))}
+          <div className="glance__item">
+            <dt className="glance__label">Find me</dt>
+            <dd className="glance__value">
+              {contact.github && (
+                <a href={contact.github} target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+              )}
+              {' · '}
+              {contact.linkedin && (
+                <a href={contact.linkedin} target="_blank" rel="noreferrer">
+                  LinkedIn
+                </a>
+              )}
+              {' · '}
+              <a href={`mailto:${contact.email}`}>Email</a>
+            </dd>
+          </div>
+        </dl>
       </div>
     </section>
   );
