@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { contact, projects, settings } from '../data/site.js';
 import { ArrowRight, ArrowUpRight } from './Icons.jsx';
 import { ProjectCover } from './ProjectCovers.jsx';
@@ -5,7 +6,26 @@ import { Headline, Reveal, SectionLabel } from './Reveal.jsx';
 
 const LINK_LABELS = { github: 'GitHub', live: 'Live demo', site: 'Website', figma: 'Figma design' };
 
-function ProjectCard({ project, number, onOpen, delay }) {
+// Which filter tabs each project belongs to
+const GROUPS = {
+  nexus: ['web'],
+  carego: ['web', 'ux'],
+  interntrack: ['web', 'ux'],
+  'asean-digital-divide': ['data'],
+  'chai-yo-para': ['web', 'ux'],
+  clickjoy: ['ux', 'other'],
+  'techtrek-edu': ['other'],
+};
+const FILTERS = [
+  { id: 'all', label: 'All' },
+  { id: 'web', label: 'Web & full-stack' },
+  { id: 'ux', label: 'UX/UI' },
+  { id: 'data', label: 'Data' },
+  { id: 'other', label: 'Interactive & community' },
+];
+const MAX_TAGS = 4;
+
+function ProjectCard({ project, number, onOpen, delay, compact = false }) {
   // Light that follows the pointer across the card.
   const onPointerMove = (event) => {
     if (event.pointerType === 'touch') return;
@@ -20,7 +40,7 @@ function ProjectCard({ project, number, onOpen, delay }) {
   return (
     <Reveal
       as="article"
-      className={`project ${project.featured ? 'project--featured' : ''}`}
+      className={`project ${compact ? 'project--compact' : 'project--featured'}`}
       delay={delay}
       onPointerMove={onPointerMove}
     >
@@ -37,7 +57,13 @@ function ProjectCard({ project, number, onOpen, delay }) {
         <h3 className="project__title">{project.title}</h3>
         <p className="project__summary">{project.summary}</p>
 
-        {(project.role || project.outcome) && (
+        {compact && project.role && (
+          <p className="project__role">
+            <span>Role</span> {project.role}
+          </p>
+        )}
+
+        {!compact && (project.role || project.outcome) && (
           <dl className="project__facts">
             {project.role && (
               <div>
@@ -56,9 +82,12 @@ function ProjectCard({ project, number, onOpen, delay }) {
 
         {project.tech?.length > 0 && (
           <ul className="tags" aria-label="Technologies and focus">
-            {project.tech.map((item) => (
+            {(compact ? project.tech.slice(0, MAX_TAGS) : project.tech).map((item) => (
               <li key={item}>{item}</li>
             ))}
+            {compact && project.tech.length > MAX_TAGS && (
+              <li className="tags__more">+{project.tech.length - MAX_TAGS}</li>
+            )}
           </ul>
         )}
 
@@ -84,10 +113,15 @@ function ProjectCard({ project, number, onOpen, delay }) {
 }
 
 export function Work({ onOpen }) {
+  const [filter, setFilter] = useState('all');
   const visible = projects.filter((project) => !(settings.hidePlaceholderProjects && project.placeholder));
-  const featured = visible.filter((project) => project.featured);
-  const rest = visible.filter((project) => !project.featured);
   const numberOf = (project) => String(visible.indexOf(project) + 1).padStart(2, '0');
+  const inFilter = (project) => filter === 'all' || (GROUPS[project.id] || ['other']).includes(filter);
+  const countFor = (id) =>
+    id === 'all' ? visible.length : visible.filter((p) => (GROUPS[p.id] || ['other']).includes(id)).length;
+
+  const shown = visible.filter(inFilter);
+  const [spotlight, ...rest] = shown;
 
   return (
     <section id="work" className="section section--alt">
@@ -100,21 +134,39 @@ export function Work({ onOpen }) {
           </Reveal>
         </div>
 
-        <div className="projects">
-          {featured.map((project) => (
-            <ProjectCard key={project.id} project={project} number={numberOf(project)} onOpen={onOpen} delay={0} />
+        <div className="work-filters" role="group" aria-label="Filter projects">
+          {FILTERS.filter((f) => countFor(f.id) > 0).map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className={`work-filter ${filter === f.id ? 'is-active' : ''}`}
+              aria-pressed={filter === f.id}
+              onClick={() => setFilter(f.id)}
+            >
+              {f.label}
+              <span className="work-filter__count">{countFor(f.id)}</span>
+            </button>
           ))}
-          <div className="projects__grid">
-            {rest.map((project, i) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                number={numberOf(project)}
-                onOpen={onOpen}
-                delay={(i % 2) * 120}
-              />
-            ))}
-          </div>
+        </div>
+
+        <div className="projects" key={filter}>
+          {spotlight && (
+            <ProjectCard project={spotlight} number={numberOf(spotlight)} onOpen={onOpen} delay={0} />
+          )}
+          {rest.length > 0 && (
+            <div className="projects__grid projects__grid--compact">
+              {rest.map((project, i) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  number={numberOf(project)}
+                  onOpen={onOpen}
+                  delay={(i % 2) * 120}
+                  compact
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {contact.github && (
