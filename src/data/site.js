@@ -77,6 +77,52 @@ export const about = {
  */
 export const projects = [
   {
+    id: 'nexus',
+    category: 'Full-Stack Web App · 3D',
+    badge: 'Solo project',
+    title: 'NEXUS',
+    summary:
+      'A developer command center that turns your projects into an interactive 3D constellation, with a real-time Kanban board, team invites and analytics behind every node.',
+    cover: 'browser',
+    image: 'projects/nexus-cover-art.jpg',
+    featured: true,
+    role: 'Designed and built the whole app: frontend, database, security and tests',
+    outcome: 'Live on Vercel, with unit, security and end-to-end tests',
+    tech: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'Three.js', 'Tailwind CSS', 'Vitest', 'Playwright'],
+    links: { github: 'https://github.com/htunhtunaung-tech/nexus_htunhtunaung', live: 'https://nexus-htunhtunaung.vercel.app' },
+    screens: [
+      { src: 'projects/nexus-landing.jpg', alt: 'NEXUS landing page with a 3D constellation preview of sample projects' },
+      { src: 'projects/nexus-cover.jpg', alt: 'Workspace page with every project shown as a planet in a 3D constellation' },
+      { src: 'projects/nexus-constellation.jpg', alt: 'Workspace page: projects as planets in 3D, with a side panel showing progress for the selected project' },
+      { src: 'projects/nexus-board.jpg', alt: 'Kanban board with five columns, priorities, due dates and assignees' },
+      { src: 'projects/nexus-analytics.jpg', alt: 'Project analytics: completion rate, overdue tasks, tasks completed per day and open tasks by person' },
+    ],
+    screensNote: 'Screens from the app, shown with sample projects, tasks and team members.',
+    details: {
+      problemTitle: 'The problem',
+      problem:
+        'Project tools usually show work as long lists. NEXUS shows each project as a planet in a 3D space, so you can see at a glance what is active, paused or finished, and open any project to manage its tasks with your team.',
+      contributions: [
+        'Designed and built the whole app on my own, from the database to the 3D interface',
+        'PostgreSQL schema in Supabase with row-level security, so people only ever see their own workspaces',
+        'Sign up, log in, log out and password reset, with protected pages',
+        '3D constellation (Three.js, React Three Fiber): drag planets to move them, rotate, zoom, hover tooltips and a side panel; Grid and List views and a fallback when WebGL is not available',
+        'Kanban board with drag and drop across five columns, search and filters, and live updates when teammates change tasks',
+        'Team workspaces: invite links, members and assignees, and an activity feed',
+        'Analytics from real task data: completion rate, overdue work and workload by person',
+      ],
+      built: [
+        'Next.js App Router with server actions and Supabase migrations',
+        '17 Vitest tests, including security tests that check one account cannot read another workspace',
+        'Playwright end-to-end test of the main journey, from sign-up to the task board',
+        'Deployed on Vercel',
+      ],
+      sections: [],
+      challenges: [],
+      outcomes: [],
+    },
+  },
+  {
     id: 'carego',
     category: 'Health · Business · Tech',
     badge: 'Pitch prototype',
