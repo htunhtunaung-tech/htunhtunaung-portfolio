@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useOverlay } from '../hooks/useOverlay.js';
 import { ArrowUpRight, Close } from './Icons.jsx';
+import { TechChip } from './SkillIcons.jsx';
 
 const LINK_LABELS = { github: 'GitHub', live: 'Live demo', site: 'Website', figma: 'Figma design' };
 
@@ -166,9 +167,9 @@ export function ProjectDialog({ project, onClose }) {
 
             {p.tech?.length > 0 && (
               <Block title="Technologies and focus" index={block++}>
-                <ul className="tags">
+                <ul className="tech-chips">
                   {p.tech.map((item) => (
-                    <li key={item}>{item}</li>
+                    <TechChip key={item} name={item} />
                   ))}
                 </ul>
               </Block>

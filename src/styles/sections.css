@@ -633,3 +633,61 @@
     margin-top: 48px;
   }
 }
+
+/* ---------- Technology chips in project details (logo + brand colour) ---------- */
+
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tech-chip {
+  --logo: var(--logo-dark, var(--accent));
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 40px;
+  padding: 0 14px 0 11px;
+  border: 1px solid color-mix(in srgb, var(--logo) 38%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--logo) 11%, var(--surface));
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  transition: transform 0.3s var(--ease), border-color 0.25s ease, box-shadow 0.3s ease, background-color 0.25s ease;
+}
+:root[data-theme='light'] .tech-chip {
+  --logo: var(--logo-light, var(--accent));
+  background: color-mix(in srgb, var(--logo) 9%, #fff);
+}
+.tech-chip--plain,
+:root[data-theme='light'] .tech-chip--plain {
+  --logo: var(--accent);
+}
+.tech-chip .skill-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--logo);
+  opacity: 1;
+  transform: none;
+  transition: transform 0.35s var(--ease);
+}
+.tech-chip:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--logo) 70%, transparent);
+  background: color-mix(in srgb, var(--logo) 18%, var(--surface));
+  box-shadow: 0 8px 22px -12px var(--logo);
+}
+.tech-chip:hover .skill-icon {
+  transform: scale(1.12) rotate(-6deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tech-chip,
+  .tech-chip .skill-icon {
+    transition: none;
+  }
+  .tech-chip:hover,
+  .tech-chip:hover .skill-icon {
+    transform: none;
+  }
+}
