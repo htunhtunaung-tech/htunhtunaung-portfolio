@@ -137,6 +137,62 @@ export const projects = [
     },
   },
   {
+    id: 'sdg-impact-hub',
+    category: 'Full-Stack Web App · Social Impact',
+    badge: 'Solo project',
+    title: 'SDG Impact Hub',
+    summary:
+      'A platform that connects volunteers, students and NGOs in Southeast Asia to projects for the 17 UN Sustainable Development Goals, where every volunteer hour is verified, not just claimed.',
+    cover: 'browser',
+    image: 'projects/sdg-cover.jpg',
+    featured: true,
+    role: 'Planned, designed and shipped the whole product: interface, database, sign-in, certificates and deployment',
+    outcome: 'Live on Vercel with a Supabase database; certificates carry a QR code anyone can scan to verify',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Supabase', 'Prisma', 'Auth.js', 'Gemini API', 'Vercel'],
+    links: { github: 'https://github.com/htunhtunaung-tech/sdg-impact-hub', live: 'https://sdg-impact-hub.vercel.app' },
+    screens: [
+      { src: 'projects/sdg-cover.jpg', alt: 'SDG Impact Hub homepage: Turn care for the Global Goals into local, measurable action' },
+      { src: 'projects/sdg-mobile.jpg', alt: 'Three phone screens: compact homepage with live stats, project list, and the 17 goals as coloured tiles' },
+      { src: 'projects/sdg-dashboard.jpg', alt: 'Volunteer dashboard with verified hours, projects joined, people reached, monthly chart and SDG contribution donut' },
+      { src: 'projects/sdg-impact.jpg', alt: 'Impact Analytics: verified hours per month and hours by goal' },
+      { src: 'projects/sdg-explore.jpg', alt: 'Explore the 17 Goals: one coloured tile per goal with its number, title, icon and project count' },
+      { src: 'projects/sdg-projects.jpg', alt: 'Project cards with goal tags, In person or Online, time needed and volunteer spots' },
+      { src: 'projects/sdg-certificate.jpg', alt: 'A4 volunteer certificate for Htun Htun Aung with verified hours, goal and a QR code for verification' },
+    ],
+    screensNote: 'App screens use sample projects and volunteers; the certificate is my own, issued by the live site.',
+    details: {
+      problemTitle: 'The problem',
+      problem:
+        'Young volunteers in Myanmar and Thailand often have no proof of the work they do: hours live in group chats and paper sign-in sheets. SDG Impact Hub lets organizers verify each contribution, so totals, badges and certificates only count real, confirmed impact.',
+      contributions: [
+        'Designed the product and its design system: soft dashboard style, official UN SDG colours with a contrast rule so text always stays readable',
+        'Volunteer, organizer and admin roles, with email sign-up confirmation and onboarding',
+        'Projects and volunteer sessions linked to the 17 goals, with filters for goal, city or online',
+        'Impact logging with organizer verification, XP, levels, badges and a leaderboard built from verified data only',
+        'Volunteer certificates: saved with a random ID, generated on the server as an A4 PDF, with a QR code that opens a public verification page',
+        'AI sustainability assistant using the Gemini API, with a graceful fallback when the free quota runs out',
+        'Mobile-first layout for phone users on prepaid data: compact homepage, light-data mode and plain-English help on every key term',
+      ],
+      built: [
+        'Next.js App Router with server actions, Prisma and PostgreSQL on Supabase, deployed on Vercel',
+        'Auth.js sessions, rate limiting and role-based access on every action',
+        'Unit tests, end-to-end tests and automated accessibility checks (WCAG 2.2 AA)',
+      ],
+      sections: [],
+      challenges: [
+        {
+          challenge: 'Downloaded certificates came out wrong on phones: small on a US Letter page, then empty, then failing on the live server.',
+          approach: 'Moved PDF creation to the server, fetched it with the signed-in session, and found that the hosting build left out the PDF fonts, then shipped them with the route.',
+        },
+        {
+          challenge: 'On some phones, one project with a long time description made the whole page zoom out.',
+          approach: 'Reproduced it with real data, fixed the card grid so long text truncates, and added a page-wide safety net.',
+        },
+      ],
+      outcomes: [],
+    },
+  },
+  {
     id: 'carego',
     category: 'Health · Business · Tech',
     badge: 'Pitch prototype',
