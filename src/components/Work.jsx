@@ -3,6 +3,7 @@ import { contact, projects, settings } from '../data/site.js';
 import { ArrowRight, ArrowUpRight } from './Icons.jsx';
 import { ProjectCover } from './ProjectCovers.jsx';
 import { Headline, Reveal, SectionLabel } from './Reveal.jsx';
+import { TechChip } from './SkillIcons.jsx';
 
 const LINK_LABELS = { github: 'GitHub', live: 'Live demo', site: 'Website', figma: 'Figma design' };
 
@@ -89,12 +90,14 @@ function ProjectCard({ project, number, onOpen, delay, compact = false }) {
         )}
 
         {project.tech?.length > 0 && (
-          <ul className="tags" aria-label="Technologies and focus">
+          <ul className="tech-chips tech-chips--card" aria-label="Technologies and focus">
             {(compact ? project.tech.slice(0, MAX_TAGS) : project.tech).map((item) => (
-              <li key={item}>{item}</li>
+              <TechChip key={item} name={item} />
             ))}
             {compact && project.tech.length > MAX_TAGS && (
-              <li className="tags__more">+{project.tech.length - MAX_TAGS}</li>
+              <li className="tech-chip tech-chip--more" title={project.tech.slice(MAX_TAGS).join(', ')}>
+                +{project.tech.length - MAX_TAGS}
+              </li>
             )}
           </ul>
         )}

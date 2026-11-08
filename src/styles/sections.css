@@ -681,6 +681,31 @@
 .tech-chip:hover .skill-icon {
   transform: scale(1.12) rotate(-6deg);
 }
+/* Smaller chips on the project cards */
+.tech-chips--card {
+  gap: 8px;
+}
+.tech-chips--card .tech-chip {
+  height: 32px;
+  gap: 7px;
+  padding: 0 11px 0 9px;
+  font-size: 13px;
+}
+.tech-chips--card .tech-chip .skill-icon {
+  width: 15px;
+  height: 15px;
+}
+.tech-chip--more {
+  --logo: var(--muted);
+  padding: 0 11px;
+  border-style: dashed;
+  color: var(--muted);
+  cursor: help;
+}
+:root[data-theme='light'] .tech-chip--more {
+  --logo: var(--muted);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tech-chip,
   .tech-chip .skill-icon {
