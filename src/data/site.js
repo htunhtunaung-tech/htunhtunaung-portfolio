@@ -148,8 +148,8 @@ export const projects = [
     featured: true,
     role: 'Planned, designed and shipped the whole product: interface, database, sign-in, certificates and deployment',
     outcome: 'Live on Vercel with a Supabase database; certificates carry a QR code anyone can scan to verify',
-    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Supabase', 'Prisma', 'Auth.js', 'Gemini API', 'Vercel'],
-    links: { github: 'https://github.com/htunhtunaung-tech/sdg-impact-hub', live: 'https://sdg-impact-hub.vercel.app' },
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Supabase', 'Prisma', 'Auth.js', 'Gemini API', 'Vercel', 'Figma'],
+    links: { figma: 'https://www.figma.com/design/6N6xpMKbhrStQuIH0OKiPF', github: 'https://github.com/htunhtunaung-tech/sdg-impact-hub', live: 'https://sdg-impact-hub.vercel.app' },
     screens: [
       { src: 'projects/sdg-cover.jpg', alt: 'SDG Impact Hub homepage: Turn care for the Global Goals into local, measurable action' },
       { src: 'projects/sdg-mobile.jpg', alt: 'Three phone screens: compact homepage with live stats, project list, and the 17 goals as coloured tiles' },
@@ -158,14 +158,17 @@ export const projects = [
       { src: 'projects/sdg-explore.jpg', alt: 'Explore the 17 Goals: one coloured tile per goal with its number, title, icon and project count' },
       { src: 'projects/sdg-projects.jpg', alt: 'Project cards with goal tags, In person or Online, time needed and volunteer spots' },
       { src: 'projects/sdg-certificate.jpg', alt: 'A4 volunteer certificate for Htun Htun Aung with verified hours, goal and a QR code for verification' },
+      { src: 'projects/sdg-figma-mobile.jpg', alt: 'Figma design: six 390 px mobile screens, from homepage to certificate verification' },
+      { src: 'projects/sdg-figma-system.jpg', alt: 'Figma design system: brand colours and the 17 official SDG colours with contrast ratings' },
     ],
-    screensNote: 'App screens use sample projects and volunteers; the certificate is my own, issued by the live site.',
+    screensNote: 'App and Figma screens use sample projects and volunteers; the certificate is my own, issued by the live site.',
     details: {
       problemTitle: 'The problem',
       problem:
         'Young volunteers in Myanmar and Thailand often have no proof of the work they do: hours live in group chats and paper sign-in sheets. SDG Impact Hub lets organizers verify each contribution, so totals, badges and certificates only count real, confirmed impact.',
       contributions: [
-        'Designed the product and its design system: soft dashboard style, official UN SDG colours with a contrast rule so text always stays readable',
+        'Designed the product and its design system in Figma: 3 pages covering colours, type, components and accessibility, six mobile screens and six desktop screens',
+        'Official UN SDG colours with a contrast rule, so text on every goal tag stays readable',
         'Volunteer, organizer and admin roles, with email sign-up confirmation and onboarding',
         'Projects and volunteer sessions linked to the 17 goals, with filters for goal, city or online',
         'Impact logging with organizer verification, XP, levels, badges and a leaderboard built from verified data only',
