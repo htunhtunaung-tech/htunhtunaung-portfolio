@@ -149,7 +149,7 @@ export const projects = [
     role: 'Planned, designed and shipped the whole product: interface, database, sign-in, certificates and deployment',
     outcome: 'Live on Vercel with a Supabase database; certificates carry a QR code anyone can scan to verify',
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Supabase', 'Prisma', 'Auth.js', 'Gemini API', 'Vercel'],
-    links: { github: 'https://github.com/htunhtunaung-tech/sdg-impact-hub', live: 'https://sdg-impact-hub.vercel.app' },
+    links: { figma: 'https://www.figma.com/design/6N6xpMKbhrStQuIH0OKiPF', github: 'https://github.com/htunhtunaung-tech/sdg-impact-hub', live: 'https://sdg-impact-hub.vercel.app' },
     screens: [
       { src: 'projects/sdg-cover.jpg', alt: 'SDG Impact Hub homepage: Turn care for the Global Goals into local, measurable action' },
       { src: 'projects/sdg-mobile.jpg', alt: 'Three phone screens: compact homepage with live stats, project list, and the 17 goals as coloured tiles' },
