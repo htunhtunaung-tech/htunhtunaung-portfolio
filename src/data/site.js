@@ -507,7 +507,7 @@ export const skills = [
   {
     group: 'Frontend Engineering',
     items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS'],
-    usedIn: ['nexus', 'chai-yo-para', 'carego'],
+    usedIn: ['nexus', 'sdg-impact-hub', 'chai-yo-para', 'carego'],
   },
   {
     group: 'Backend Engineering',
@@ -517,7 +517,7 @@ export const skills = [
   {
     group: 'Database, Cloud & Testing',
     items: ['PostgreSQL', 'SQL', 'Supabase', 'Vercel', 'Git', 'Vitest', 'Playwright', 'pytest'],
-    usedIn: ['nexus', 'interntrack', 'asean-digital-divide'],
+    usedIn: ['nexus', 'sdg-impact-hub', 'interntrack', 'asean-digital-divide'],
   },
   {
     group: 'Data, AI & Machine Learning',

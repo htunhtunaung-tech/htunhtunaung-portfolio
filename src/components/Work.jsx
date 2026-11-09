@@ -10,6 +10,7 @@ const LINK_LABELS = { github: 'GitHub', live: 'Live demo', site: 'Website', figm
 // Which filter tabs each project belongs to
 const GROUPS = {
   nexus: ['web'],
+  'sdg-impact-hub': ['web', 'ux'],
   carego: ['web', 'ux'],
   interntrack: ['web', 'ux'],
   'asean-digital-divide': ['data'],
