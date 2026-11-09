@@ -438,13 +438,84 @@
   line-height: 1.4;
   color: var(--text-2);
 }
+.how__step {
+  position: relative;
+  padding: 0 0 16px;
+  border-radius: 10px;
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease), color 0.3s ease;
+  transition-delay: var(--d, 0ms), var(--d, 0ms), 0ms;
+}
+.how__step > span:last-child {
+  transition: transform 0.4s var(--ease), color 0.3s ease;
+}
 .how__num {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--line-2);
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--accent);
+}
+/* A small node on the line that lights up as each step arrives */
+.how__num::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  transition-delay: calc(var(--d, 0ms) + 250ms);
+}
+/* The line under each number draws itself in, one step after another */
+.how__num::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.9s var(--ease), opacity 0.3s ease;
+  transition-delay: calc(var(--d, 0ms) + 250ms);
+}
+.how__step.is-visible .how__num::after {
+  transform: scaleX(1);
+}
+.how__step.is-visible .how__num::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+/* Hover: the step brightens and steps forward */
+.how__step:hover {
+  color: var(--text);
+}
+.how__step:hover > span:last-child {
+  transform: translateX(4px);
+}
+.how__step:hover .how__num::after {
+  height: 3px;
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+.how__step:hover .how__num::before {
+  box-shadow: 0 0 0 6px var(--accent-soft), 0 0 14px var(--accent-glow);
+}
+@media (prefers-reduced-motion: reduce) {
+  .how__num::after {
+    transform: scaleX(1);
+  }
+  .how__step:hover > span:last-child {
+    transform: none;
+  }
 }
 
 /* ---------- Skills: category cards ---------- */
@@ -627,6 +698,14 @@
   .how__num {
     padding: 2px 0 0;
     border: 0;
+  }
+  .how__num::before,
+  .how__num::after {
+    display: none;
+  }
+  .how__step {
+    padding: 14px 0;
+    border-radius: 0;
   }
   .pillars {
     grid-template-columns: minmax(0, 1fr);
