@@ -502,38 +502,40 @@ export const projects = [
 ];
 
 // Only list tools you can talk about in an interview.
-// usedIn: project ids from the list above; they become links that open that project.
+// "Used in" fills itself: any project whose `tech` list contains one of a
+// group's `items` (or `alsoMatch`) is linked automatically, so adding a
+// project above is enough. `usedIn` adds a project by hand when its tech
+// list does not show the skill (for example a design role).
 export const skills = [
   {
     group: 'Frontend Engineering',
     items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS'],
-    usedIn: ['nexus', 'sdg-impact-hub', 'chai-yo-para', 'carego'],
   },
   {
     group: 'Backend Engineering',
     items: ['Python', 'Django', 'Django REST Framework', 'REST APIs', 'Java', 'C++'],
-    usedIn: ['interntrack', 'chai-yo-para'],
+    alsoMatch: ['Prisma', 'Auth.js', 'Node.js'],
   },
   {
     group: 'Database, Cloud & Testing',
     items: ['PostgreSQL', 'SQL', 'Supabase', 'Vercel', 'Git', 'Vitest', 'Playwright', 'pytest'],
-    usedIn: ['nexus', 'sdg-impact-hub', 'interntrack', 'asean-digital-divide'],
   },
   {
     group: 'Data, AI & Machine Learning',
     items: ['pandas', 'scikit-learn', 'statsmodels', 'Streamlit', 'Data visualization'],
-    usedIn: ['asean-digital-divide'],
+    alsoMatch: ['Plotly', 'linearmodels', 'Gemini API'],
     note: 'Courses: Google AI Essentials · AI Foundations: Machine Learning',
   },
   {
     group: 'UI/UX Design',
     items: ['Figma', 'UX research', 'Prototyping', 'Accessibility', 'Graphic design'],
-    usedIn: ['interntrack', 'chai-yo-para', 'clickjoy'],
+    // Projects with a Figma design link count automatically.
+    matchFigma: true,
+    usedIn: ['chai-yo-para', 'clickjoy'],
   },
   {
     group: '3D & Creative Technology',
     items: ['Three.js', 'React Three Fiber', 'Blender', '3D modeling', 'Digital media production'],
-    usedIn: ['nexus'],
   },
 ];
 
