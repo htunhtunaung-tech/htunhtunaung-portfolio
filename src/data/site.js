@@ -67,12 +67,12 @@ export const about = {
   // Four short lines on who I am, shown beside the photo.
   pillars: [
     { title: 'Full-stack developer', text: 'Web apps from interface to database, with tests and deployment.' },
-    { title: 'Digital Media Engineering student', text: 'Second year at Khon Kaen University, alongside Computer Science at UoPeople.' },
+    { title: 'Digital Media Engineering student', text: 'Second year, International Program, at Khon Kaen University, alongside Computer Science at UoPeople.' },
     { title: 'AI and creative computing', text: 'Exploring machine learning, data and 3D on the web.' },
     { title: 'STEM education advocate', text: 'Founder of TechTrek Edu, teaching STEM and programming since 2021.' },
   ],
   facts: [
-    { label: 'Studying', value: 'B.Eng Digital Media Engineering', detail: 'Khon Kaen University, Thailand' },
+    { label: 'Studying', value: 'B.Eng Digital Media Engineering', detail: 'International Program · Khon Kaen University, Thailand' },
     { label: 'Also studying', value: 'B.Sc Computer Science', detail: 'University of the People, USA' },
     { label: 'Founded', value: 'TechTrek Edu', detail: 'Youth-led STEM and digital literacy initiative' },
     { label: 'Languages', value: 'Burmese (native) · English (C1) · Thai (basic)', detail: null },
@@ -543,7 +543,7 @@ export const education = [
   {
     period: '2nd year · Present',
     title: 'B.Eng, Digital Media Engineering',
-    place: 'Khon Kaen University, Thailand',
+    place: 'International Program · Khon Kaen University, Thailand',
     note: 'Fully funded four-year scholarship',
   },
   {
